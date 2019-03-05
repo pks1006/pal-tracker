@@ -12,7 +12,7 @@ public class EnvController {
 
     Map<String, String> map = new HashMap<String, String>();
 
-    public EnvController(@Value("${port}") String port, @Value("${memory.limit}") String mem, @Value("${cf.instance.index}") String ind, @Value("${cf.instance.addr}") String add){
+    public EnvController(@Value("${port:NOT SET}") String port, @Value("${memory.limit:NOT SET}") String mem, @Value("${cf.instance.index:NOT SET}") String ind, @Value("${cf.instance.addr:NOT SET}") String add){
         map.put("PORT",port);
         map.put("MEMORY_LIMIT",mem);
         map.put("CF_INSTANCE_INDEX",ind);
