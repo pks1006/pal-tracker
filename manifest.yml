@@ -6,4 +6,3 @@ applications:
       - route: https://team1.apps.pcf.paltraining.perficient.com/
     env:
       WELCOME_MESSAGE: Hello from the review environment
-      JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 11.+ } }'
