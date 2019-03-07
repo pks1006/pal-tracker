@@ -32,7 +32,8 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-jdbc:$springBootVersion")
 
     compile("mysql:mysql-connector-java:6.0.6")
-
+    compile("org.springframework.boot:spring-boot-starter-actuator:$springBootVersion")
+    
     testCompile("org.springframework.boot:spring-boot-starter-test:$springBootVersion")
     testCompile("junit:junit:4.12")
 }
@@ -45,13 +46,21 @@ bootRun.environment([
         "CF_INSTANCE_INDEX":"1",
         "CF_INSTANCE_ADDR":"123.sesame.street",
         "SPRING_DATASOURCE_URL": developmentDbUrl,
+        "MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE": "*",
+        "MANAGEMENT_ENDPOINT_HEALTH_SHOWDETAILS": "always",
 ])
 
 def testDbUrl = "jdbc:mysql://localhost:3306/tracker_test?user=tracker&useSSL=false&useTimezone=true&serverTimezone=UTC&useLegacyDatetimeCode=false"
 test.environment([
         "WELCOME_MESSAGE": "Hello from test",
         "SPRING_DATASOURCE_URL": testDbUrl,
+        "MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE": "*",
+        "MANAGEMENT_ENDPOINT_HEALTH_SHOWDETAILS": "always",
 ])
+
+springBoot {
+    buildInfo()
+}
 
 flyway {
     url = developmentDbUrl
