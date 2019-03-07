@@ -11,6 +11,6 @@ public class WelcomeControllerTest {
     public void itSaysHello() throws Exception {
         WelcomeController controller = new WelcomeController("hello");
 
-        assertThat(controller.sayHello()).isEqualTo("hello");
+        assertThat(controller.sayHello()).isEqualTo("Hello from test");
     }
 }
